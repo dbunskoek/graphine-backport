@@ -1592,7 +1592,7 @@ class Graph:
 			... <graph object>
 
 		"""
-		tree = type(self)()
+		tree = self.__class__()
 		for e in sorted(list(self.edges), key=weight):
 			if not ((e.start in tree) and (e.end in tree)):
 				tree.add_edge(e.start.name, e.end.name, e.name, **e.data)
@@ -1739,7 +1739,7 @@ class Graph:
 			>>> new_mission.size
 			0
 		"""
-		g = type(self)()
+		g = self.__class__()
 		for node in nodes:
 			node = self.get_element(node)
 			name = node.name
@@ -1759,7 +1759,7 @@ class Graph:
 	def edge_induce_subgraph(self, *edges):
 		"""Similar to induce_subgraph but accepting edges rather than nodes."""
 		# create the new graph
-		g = type(self)()
+		g = self.__class__()
 		for edge in edges:
 			edge = self.get_element(edge)
 			# and add them if they don't already exist
@@ -1800,7 +1800,7 @@ class Graph:
 			[2, 4, 6]
 		"""
 		# create the graph
-		g = type(self)()
+		g = self.__class__()
 		# add our nodes
 		for node in chain(self.nodes, other.nodes):
 			g.add_node(node.name, **node.data)
@@ -1834,7 +1834,7 @@ class Graph:
 			[4]
 		"""
 		# create the graph
-		g = type(self)()
+		g = self.__class__()
 		# iterate through our nodes
 		for node in self.nodes:
 			if node in other:
@@ -1892,7 +1892,7 @@ class Graph:
 			[]
 		"""
 		# create the graph
-		g = type(self)()
+		g = self.__class__()
 		# create all the equivalent nodes
 		for node in self.nodes:
 			if node not in other:
